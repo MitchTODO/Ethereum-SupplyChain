@@ -1,7 +1,6 @@
 App = {
     web3Provider: null,
     contracts: {},
-    emptyAddress: "0x0000000000000000000000000000000000000000",
     upc: 0,
     metamaskAccountID: "0x0000000000000000000000000000000000000000",
     ownerID: "0x0000000000000000000000000000000000000000",
@@ -74,7 +73,6 @@ App = {
                 return;
             }
 
-            console.log('getMetaskID:',res);
             App.metamaskAccountID = res[0];
             if (res.length > 1){
             document.getElementById("divType").innerText = "Ganache Address"
@@ -207,14 +205,14 @@ App = {
         App.contracts.SupplyChain.deployed().then( async function(instance) {
             resultTag.className = " loader";
             var checkRole = await instance.isFarmer(App.originFarmerID);
-
             if (checkRole == false){
-              instance.addFarmer(
+              await instance.addFarmer(
                   App.originFarmerID,
                   {from: App.metamaskAccountID, gas:3000000}
               );
-              checkRole = await instance.isFarmer(App.originFarmerID);
             }
+            sleep(800);
+            checkRole = await instance.isFarmer(App.originFarmerID);
             return checkRole;
         }).then(function(result) {
             resultTag.className = " inputFeilds";
@@ -240,12 +238,13 @@ App = {
             resultTag.className = " loader";
             var checkRole = await instance.isDistributor(App.DistributorID);
             if(checkRole == false){
-              instance.addDistributor(
-                  App.DistributorID,
+              await instance.addDistributor(App.DistributorID,
                   {from: App.metamaskAccountID, gas:3000000}
+
               );
-              checkRole = await instance.isDistributor(App.DistributorID);
             }
+            sleep(800);
+            checkRole = await instance.isDistributor(App.DistributorID);
             return checkRole
         }).then(function(result) {
             resultTag.className = " inputFeilds";
@@ -270,12 +269,13 @@ App = {
             resultTag.className = " loader";
             var checkRole = await instance.isRetailer(App.RetailerID);
             if (checkRole == false){
-              instance.addRetailer(
+              await instance.addRetailer(
                   App.RetailerID,
                   {from: App.metamaskAccountID, gas:3000000}
               );
-              checkRole = await instance.isRetailer(App.RetailerID);
             }
+            sleep(800);
+            checkRole = await instance.isRetailer(App.RetailerID);
             return checkRole;
         }).then(function(result) {
             resultTag.className = " inputFeilds";
@@ -299,12 +299,13 @@ App = {
             resultTag.className = " loader";
             var checkRole = await instance.isConsumer(App.ConsumerID);
             if (checkRole == false){
-              instance.addConsumer(
+              await instance.addConsumer(
                   App.ConsumerID,
                   {from: App.metamaskAccountID, gas:3000000}
               );
-              checkRole = await instance.isConsumer(App.ConsumerID);
             }
+            sleep(800);
+            checkRole = await instance.isConsumer(App.ConsumerID);
             return checkRole;
         }).then(function(result) {
             resultTag.className = " inputFeilds";
@@ -682,3 +683,7 @@ $(function () {
         App.init();
     });
 });
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
