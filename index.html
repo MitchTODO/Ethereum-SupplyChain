@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Parmigiano reggiano</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body class = "font">
+    <h1>Parmigiano Reggiano Supply Chain</h1>
+  <div class = "step">
+    <p class = "step"> Step 1: Add Address to appropriate role</p>
+    <p class = "step" id = "divType"></p>
+    <div class = "outline"style = "height: 100px; display: flex;">
+        <button class = "button" data-id="1">Add Farmer</button>
+        <input id = "farmerID" class = "inputFeilds">
+        <p id = "isFarmer" class = "inputFeilds"></p>
+
+    </div>
+
+    <div class = "outline" style = "height: 100px; display: flex;">
+        <button class = "button " data-id="2">Add Distributor</button>
+        <input id = "distributorID" class = "inputFeilds">
+        <p id = "isDistributor" class = "inputFeilds"></p>
+    </div>
+
+    <div class = "outline" style = "height: 100px; display: flex;">
+        <button class = "button" data-id="3">Add Retailer</button>
+        <input id = "retailerID" class = "inputFeilds">
+        <p id = "isRetailer" class = "inputFeilds"></p>
+    </div>
+
+    <div class = "outline" style = "height: 100px; display: flex;">
+        <button class = "button" data-id="4">Add Consumer</button>
+        <input id = "consumerID" class = "inputFeilds">
+        <p id = "isConsumer" class = "inputFeilds"></p>
+    </div>
+</div>
+
+<div class = "step">
+    <p class = "step ">Validate the authenticity of the product</p>
+    <div class = "outline">
+        <div class = "contain">
+            <p class = 'font'>Universal Product Code:</p><input class = "inputFeilds" id = "upc1">
+        </div>
+    </div>
+    <div class = "outline" style="
+    margin: 1%;">
+        <button class = "button" data-id="5" style="height: 40px; margin: auto;">Fetch Item BufferOne</button>
+        <button class = "button" data-id="6" style="height: 40px; margin: auto;">Fetch Item BufferTwo</button>
+        <button class = "button" data-id="7" style="height: 40px; margin: auto;">Fetch Item History</button>
+    </div>
+    <div id = "BlockInfoBufferOne">
+
+    </div>
+</div>
+
+<div class = "step">
+    <p class = "step">Farmer Produced Product (ONLY FARMER)</p>
+    <div class = "outline">
+        <div class = "contain font">
+            <p>Origin Farm Name:</p><input id = "FN" class = "inputFeilds" value="Gonzaga P.pe Corrado" >
+            <p>Origin Farm Information:</p><input id = "FI" class = "inputFeilds" value="Province of Parma, Italy" >
+            <p>Origin Farm Latitude:</p><input id = "FLA" class = "inputFeilds" value="44 48 01.5">
+            <p>Origin Farm Longitiude:</p><input id = "FLO" class = "inputFeilds" value="10 19 51.4">
+            <p>Product Notes:</p><input id = "PN" class = "inputFeilds" value="Grade A">
+            <p>Product Price:</p><input id = "PP" class = "inputFeilds" value="899" >
+            <p>Universal Product Code:</p><input  id = "upc" class = "inputFeilds" value = "1" type="number">
+        </div>
+    </div>
+    <div class = "outline" style="
+    margin: 1%;">
+        <button class = "button" data-id="8">Step 2: Produce Item By Farmer</button>
+        <p id = "pr" class = "font">
+        </p>
+    </div>
+</div>
+
+<div class = "step">
+    <p class = "step">Process Product (ONLY DISTRIBUTOR) </p>
+    <div class = "outline">
+        <div class = "contain font">
+            <p>Universal Product Code:</p><input id = "processupc" class = "inputFeilds">
+            <p>Number of cheese slices:</p><input id = "processnumber" type="number" class = "inputFeilds">
+        </div>
+    </div>
+    <div>
+    <div class = "outline" style="margin: 1%;">
+        <button class = "button" data-id="13"> Step 7: Process Item By Distributor</button>
+        <p id = "pibd" class = "font"></p>
+    </div>
+  </div>
+</div>
+
+<div class = "step">
+    <p class = "step">Package Product (ONLY DISTRIBUTOR) </p>
+    <div class = "outline">
+        <div class = "contain font">
+            <p>Universal Product Code:</p><input id = "packageupc" class = "inputFeilds">
+        </div>
+    </div>
+    <div class = "outline" style="margin: 1%; display: flex;">
+        <button class = "button" data-id="14"> Step 8: Package Item By Distributor</button>
+        <p id = "paibd" class = "font"></p>
+    </div>
+</div>
+
+<div class = "step">
+    <p class = "step">Sell Product </p>
+    <div class = "outline">
+        <div class = "contain font">
+            <p>Universal Product Code:</p><input id = "sellupc" class = "inputFeilds">
+            <p>Product Price:</p><input id = "sellprice"  class = "inputFeilds">
+        </div>
+    </div>
+    <div class = "outline" style="margin: 1%; display: flex;">
+        <button class = "button" data-id="9">Step 3: Sell Item By Farmer</button>
+        <p id = "srf" class = "font"></p>
+    </div>
+    <div class = "outline" style="margin: 1%; display: flex;">
+        <button class = "button" data-id="15">Step 9: Sell Item By Distributor</button>
+        <p id = "srd" class = "font"></p>
+    </div>
+    <div class = "outline" style="margin: 1%; display: flex;">
+        <button class = "button" data-id="19">Step 13: Sell Item By Retailer</button>
+          <p id = "sibr" class = "font"></p>
+    </div>
+</div>
+<div class = "step">
+    <p class = "step">Purchased Product </p>
+    <div class = "outline">
+        <div class = "contain">
+            <p>Universal Product Code:</p><input id = "purchaseupc" class = "inputFeilds">
+        </div>
+    </div>
+
+      <div class = "outline" style="margin: 1%; display: flex;">
+        <button class = "button" data-id="10">Step 4: Purchase Item By Distributor</button>
+        <p id = "pid" class = "font"></p>
+      </div>
+      <div class = "outline" style="margin: 1%; display: flex;">
+        <button class = "button" data-id="16" >Step 10: Purchase Item By Retailer</button>
+        <p id = "pir" class = "font"></p>
+      </div>
+      <div class = "outline" style="margin: 1%; display: flex;">
+        <button class = "button" data-id="20">Step 14: Purchase Item By Consumer</button>
+        <p id = "pic" class = "font"></p>
+      </div>
+  </div>
+
+<div class = "step">
+    <p class = "step">Ship Product </p>
+    <div class = "outline">
+        <div class = "contain">
+            <p>Universal Product Code:</p><input id = "shipupc" class = "inputFeilds">
+        </div>
+    </div>
+    <div class = "outline" style="margin: 1%;">
+        <button class = "button" data-id="11" >Step 5: Ship Item By Farmer</button>
+        <p id = "sibf" class = "font"></p>
+    </div>
+    <div class = "outline" style="margin: 1%;">
+        <button class = "button" data-id="17" >Step 11: Ship Item By Distributor</button>
+        <p id = "sibd" class = "font"></p>
+    </div>
+</div>
+
+<div class = "step">
+    <p class = "step">Received Product </p>
+    <div class = "outline">
+        <div class = "contain">
+            <p>Universal Product Code:</p><input id = "receiveupc" class = "inputFeilds">
+        </div>
+    </div>
+    <div class = "outline" style="margin: 1%;">
+        <button class = "button" data-id="12">Step 6: Received Item By Distributor</button>
+        <p id = "ribd" class = "font"></p>
+    </div>
+    <div class = "outline" style="margin: 1%;">
+        <button class = "button" data-id="18">Step 12: Received Item By Retailer</button>
+        <p id = "ribr" class = "font"></p>
+    </div>
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- <script src="js/web3.min.js"></script> -->
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+
+</html>

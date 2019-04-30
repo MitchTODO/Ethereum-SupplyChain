@@ -1,0 +1,26 @@
+{
+  "name": "supply-chain-e",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "pk <pkrasam@gmail.com> (https://ipfs.infura.io/ipfs/QmSXiR9Khm3yo1J67nUopvVBxFJ8YGN2fUGZ34Etr3m92x/)",
+  "license": "MIT",
+  "devDependencies": {
+    "lite-server": "2.4.0"
+  },
+  "dependencies": {
+    "geth": "^0.4.0",
+    "openzeppelin-solidity": "^2.2.0",
+    "truffle": "^5.0.14",
+    "truffle-hdwallet-provider": "^1.0.8",
+    "web3": "^1.0.0-beta.52"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "description": ""
+}
