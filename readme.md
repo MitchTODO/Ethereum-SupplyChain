@@ -1,41 +1,141 @@
 # Parmigiano Reggiano blockchain
 
-## Discription
+## Description
 
-## Files
+A supply chain smart contract written in Solidity and deployed on the Rinkeby test network. This Smart contract demonstrates how smart contracts will improve authenticity, efficiency and privacy between seller and buyer Supply Chains .
 
-## Architectuour
+ The supply chain used is the Parmigiano Reggiano supply chain.
 
+## Directory Structor
 
+```
+Ethereum_SupplyChian--|
+                      |--- Diagrams
+                      |       |
+                      |       |---Parmigiano_Reggiano_Activity_Diagram.png
+                      |       |  
+                      |       |---Parmigiano_Reggiano_DataModel_Diagram.png
+                      |       |   
+                      |       |---Parmigiano_Reggiano_Sequence_Diagram.png  
+                      |       |
+                      |       |---Parmigiano_Reggiano_State_Diagram.png
+                      |
+                      |  
+                      |--- build/contracts (compiled contracts)
+                      |       |      
+                      |       |---ConsumerRole.json
+                      |       |
+                      |       |---DistributorRole.json
+                      |       |
+                      |       |---FarmerRole.json
+                      |       |
+                      |       |---Mirgations.json
+                      |       |
+                      |       |---Ownable.json
+                      |       |
+                      |       |---RetailerRole.json
+                      |       |
+                      |       |---Roles.json
+                      |       |
+                      |       |---SupplyChain.json
+                      |
+                      |
+                      |--- contracts
+                      |       |        
+                      |       |---parmigianoaccesscontrol
+                      |       |        |   
+                      |       |        |---ConsumerRole.sol
+                      |       |        |
+                      |       |        |---Distributor.sol
+                      |       |        |
+                      |       |        |---FarmerRole.sol
+                      |       |        |
+                      |       |        |---RetailerRole.sol
+                      |       |        |
+                      |       |        |---Roles.sol
+                      |       |
+                      |       |---parmigianobase
+                      |       |        |
+                      |       |        |---SupplyChain.sol
+                      |       |
+                      |       |---parmigianocore
+                      |       |        |
+                      |       |        |---Ownable.sol
+                      |       |
+                      |       |---Migrations.sol
+                      |       
+                      |--- migrations
+                      |       |
+                      |       |---1_initial_migration.js
+                      |       |
+                      |       |---2_deploy_contracts.js
+                      |
+                      |--- js
+                      |       |
+                      |       |--app.js
+                      |       |
+                      |       |---truffle-contract.js
+                      |
+                      |
+                      |--- test
+                      |       |
+                      |       |---TestSupplychain.js
+                      |
+                      |
+                      |--- index.html
+                      |
+                      |
+                      |--- package-lock.json
+                      |
+                      |
+                      |--- package.json
+                      |
+                      |
+                      |--- readme.md
+                      |
+                      |
+                      |--- style.css
+                      |
+                      |
+                      |--- truffle.js
+                      |
 
-## Activity Diagram
+```
+
+---
+
+## Contract Architecture
+
+### Activity Diagram
 
 ![Activity_Diagram](/Diagrams/Parmigiano_Reggiano_Activity_Diagram.png)
 
 
----
-
-## Sequence Diagram
+### Sequence Diagram
 
 ![Sequence_Diagram](/Diagrams/Parmigiano_Reggiano_Sequence_Diagram.png)
 
 ## State Diagram
 
-![GitHub Logo](/Diagrams/Parmigiano_Reggiano_State_Diagram.png)
-
-### States
-
----
+![State Diagram](/Diagrams/Parmigiano_Reggiano_State_Diagram.png)
 
 ## DataModel Diagram
 
-![GitHub Logo](/Diagrams/Parmigiano_Reggiano_DataModel_Diagram.png)
+![DataModel Diagram](/Diagrams/Parmigiano_Reggiano_DataModel_Diagram.png)
+
+---
 
 ## Solidity Functions
 
 ## Access Control
 
+Contract owner allows for other address to be added
+
 ## Authenticity
+
+## Versions
+
+## Testing
 
 ## App.js
 
