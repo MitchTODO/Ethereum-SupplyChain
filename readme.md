@@ -2,9 +2,9 @@
 
 ## Description
 
-A supply chain smart contract written in Solidity and deployed on the Rinkeby test network. This Smart contract demonstrates how smart contracts will improve authenticity, efficiency and privacy between seller and buyer Supply Chains.
+A supplychain smart contract written in Solidity and deployed on the Rinkeby test network. This Smart contract demonstrates how supplychains can improve authenticity, efficiency and privacy between seller and buyer.
 
- The supply chain used is the Parmigiano Reggiano supply chain.
+ The smart Contracts simulates the Parmigiano Reggiano supply chain.
 
 ## Directory Structor
 
@@ -365,10 +365,9 @@ Used to test the all 16 supply-chain functions, all test pass the requirements.
 
 ## Dapp
 
-I do find my UI a little difficult to used but being the third division I had to settle on something.
+I do find my UI a little difficult to used but being the third division I had to settle on something. I added steps to help simulate the supplychain.
 
-Follow the steps to purchase some cheese from the farmer to the consumer.
-
+![alt text](/readmepic/pic2.png "All test pass")
 
 
 ## Versions
