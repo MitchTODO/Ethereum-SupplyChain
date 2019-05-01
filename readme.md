@@ -4,7 +4,7 @@
 
 A supplychain smart contract written in Solidity and deployed on the Rinkeby test network. This Smart contract demonstrates how supplychains can improve authenticity, efficiency and privacy between seller and buyer.
 
- The smart Contracts simulates the Parmigiano Reggiano supply chain.
+ The smart Contracts simulates the Parmigiano Reggiano supplychain.
 
 ## Directory Structor
 
@@ -127,7 +127,7 @@ Ethereum_SupplyChian--|
 
 ## Solidity Functions
 
-### modifiers
+### Modifiers
 
 Modifiers can be split in to three groups,
 
@@ -265,9 +265,9 @@ modifier onlyConsumer() {
 
 
 
-### events
+### Events
 
-Each supply chain function emits its own event when successful.
+Each supplychain function emits its own event.
 
 ```js
 event ProduceByFarmer(uint upc);         //1
@@ -287,13 +287,13 @@ event PurchasedByConsumer(uint upc);     //13
 
 ### Access Control
 
-Access control is implemented by contracts found within the parmigianoaccesscontrol directory that are inherited by the supplychain. Consisting of four contracts for each actor of the supply chain (Farmer,Distributor,Retailer and Consumer). Each contract contains a function that allows a address to be added to that role. This is only premitted by the contract owner. Contract modifiers are used to inforce access controls within the supplychain.
+Access control is implemented by contracts found within the "parmigianoaccesscontrol" directory that are inherited by the supplychain. Consisting of four contracts for each actor of the supplychain (Farmer,Distributor,Retailer and Consumer). Each contract contains a function that allows an address to be added to that role and is only permitted by the contract owner. Contract modifiers are used to enforce access controls within the supplychain.
 
 
 
-### Supply Chain
+### Supplychain
 
-16 functions make up the Parmigiano Reggiano supply chain, including the validation functions (fetchItemBufferOne,fetchItemBufferTwo,fetchItemHistory) that are available to all roles.
+16 functions make up the Parmigiano Reggiano supplychain, including the validation functions.
 
 
 __SupplyChain Functions__
@@ -320,55 +320,37 @@ __SupplyChain Functions__
 
 ### Check Authenticity
 
-The consumer can check authenticity by calling out fetchItemBufferOne() with the upc as input, this will return essential consumer information
+The consumer can check authenticity by calling out fetchItemBufferOne() with the upc as input, this will return essential consumer information.
 
-```
-originFarmerID
-originFarmName
-originFarmInformation
-originFarmLatitude
-originFarmLongitude
-productDate
-projectSliced.
-```
+![alt text](/readmepic/pic3.png "Pic")
 
-Additional information can be received by calling out fetchItemBufferTwo this will return information more essential to the supplychain.
-```
-sku
-upc
-productID,
-productNotes
-productDate
-itemState
-distributorID
-retailerID
-consumerID
-```
+Additional information can be received by calling out fetchItemBufferTwo this will return information essential to the supplychain.
 
-ItemHistory returns three block-numbers of where ownership of the item changed.
+![alt text](/readmepic/pic4.png "Pic")
 
-```
-farmerToDistributor
-DistributorToRetailer
-RetailerToConsumer
-```
+ItemHistory returns three block numbers of where ownership of the item changed.
+
+![alt text](/readmepic/pic5.png "Pic")
 
 ---
 
 
 ## TestSupplychain.js
 
-Used to test the all 16 supply-chain functions, all test pass the requirements.
+Used to test the all 16 supplychain functions, all test pass the requirements.
 
 ![alt text](/readmepic/pic1.png "All test pass")
 
 
 ## Dapp
 
-I do find my UI a little difficult to used but being the third division I had to settle on something. I added steps to help simulate the supplychain.
+I do find my UI a little difficult to use, but settled on the third revision.
 
-![alt text](/readmepic/pic2.png "All test pass")
+![alt text](/readmepic/pic2.png "Pic")
 
+![alt text](/readmepic/pic6.png "Pic")
+
+![alt text](/readmepic/pic7.png "Pic")
 
 ## Versions
 
@@ -409,7 +391,7 @@ _Note depending on ganache cli/ui you my need to change truffle.js port settings
 
         truffle migrate --network development  --reset --all
 
-6. Testing
+6. Testing on ganache
 
         truffle test
 
@@ -420,6 +402,8 @@ _Note depending on ganache cli/ui you my need to change truffle.js port settings
 
 8. Migrating to Rinkeby
 
+_Note Change truffle settings to your Contract Creator address within the "from" rinkeby configuration_
+
         truffle migrate --network rinkeby  --reset --all
 
 9. Start FrontEnd DApp on Rinkeby
@@ -429,6 +413,6 @@ _Note depending on ganache cli/ui you my need to change truffle.js port settings
 
 ## Sources
 
-Understanding Parmigiano Reggiano supply chain https://www.academia.edu/2722756/The_supply_chain_for_Parmigiano-Reggiano_cheese_in_the_United_States
+Understanding Parmigiano Reggiano supplychain https://www.academia.edu/2722756/The_supply_chain_for_Parmigiano-Reggiano_cheese_in_the_United_States
 
 Creating diagrams https://www.draw.io/
