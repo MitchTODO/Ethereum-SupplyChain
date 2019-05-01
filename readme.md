@@ -125,13 +125,18 @@ Ethereum_SupplyChian--|
 
 ---
 
-## Solidity Functions
+## Solidity SupplyChain Functions
+
+### produceItemByFarmer
+
+### 
 
 ## Access Control
 
 Contract owner allows for other address to be added
 
 ## Authenticity
+
 
 ## Versions
 
