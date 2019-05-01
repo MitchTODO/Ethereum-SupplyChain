@@ -2,7 +2,7 @@
 
 ## Description
 
-A supply chain smart contract written in Solidity and deployed on the Rinkeby test network. This Smart contract demonstrates how smart contracts will improve authenticity, efficiency and privacy between seller and buyer Supply Chains .
+A supply chain smart contract written in Solidity and deployed on the Rinkeby test network. This Smart contract demonstrates how smart contracts will improve authenticity, efficiency and privacy between seller and buyer Supply Chains.
 
  The supply chain used is the Parmigiano Reggiano supply chain.
 
@@ -104,7 +104,7 @@ Ethereum_SupplyChian--|
 
 ---
 
-## Contract Architecture
+## Contract Diagrams
 
 ### Activity Diagram
 
@@ -125,30 +125,312 @@ Ethereum_SupplyChian--|
 
 ---
 
-## Solidity SupplyChain Functions
+## Solidity Functions
 
-### produceItemByFarmer
+### modifiers
 
-### 
+Modifiers can be split in to three groups,
 
-## Access Control
+1. Checking ownership and values payed
 
-Contract owner allows for other address to be added
+```js
+// Define a modifer that checks to see if msg.sender == owner of the contract
+modifier onlyOwner() {
+  require(msg.sender == owner);
+  _;
+}
 
-## Authenticity
+// Define a modifer that verifies the Caller
+modifier verifyCaller (address _address) {
+  require(msg.sender == _address);
+  _;
+}
+
+// Define a modifier that checks if the paid amount is sufficient to cover the price
+modifier paidEnough(uint _price) {
+  require(msg.value >= _price);
+  _;
+}
+
+// Define a modifier that checks the price and refunds the remaining balance
+modifier checkValue(uint _upc, address payable addressToFund) { // ADDED address payable
+  uint _price = items[_upc].productPrice;
+  uint  amountToReturn = msg.value - _price;
+  addressToFund.transfer(amountToReturn);
+  _;
+}
+```
+
+2. Check the item has passed the previous step of the supplychain.
+
+
+```js
+// itemState : 0
+modifier producedByFarmer(uint _upc) {
+  require(items[_upc].itemState == State.ProduceByFarmer);
+  _;
+}
+// State : 1
+modifier forSaleByFarmer(uint _upc) {
+  require(items[_upc].itemState == State.ForSaleByFarmer);
+  _;
+}
+// State : 2
+modifier purchasedByDistributor(uint _upc) {
+  require(items[_upc].itemState == State.PurchasedByDistributor);
+  _;
+}
+// State : 3
+modifier shippedByFarmer(uint _upc) {
+  require(items[_upc].itemState == State.ShippedByFarmer);
+  _;
+}
+// State : 4
+modifier receivedByDistributor(uint _upc) {
+  require(items[_upc].itemState == State.ReceivedByDistributor);
+  _;
+}
+// State : 5
+modifier processByDistributor(uint _upc) {
+  require(items[_upc].itemState == State.ProcessedByDistributor);
+  _;
+}
+// State : 6
+modifier packagedByDistributor(uint _upc) {
+  require(items[_upc].itemState == State.PackageByDistributor);
+  _;
+}
+// State : 7
+modifier forSaleByDistributor(uint _upc) {
+  require(items[_upc].itemState == State.ForSaleByDistributor);
+  _;
+}
+
+// State : 8
+modifier shippedByDistributor(uint _upc) {
+  require(items[_upc].itemState == State.ShippedByDistributor);
+  _;
+}
+// State : 9
+modifier purchasedByRetailer(uint _upc) {
+  require(items[_upc].itemState == State.PurchasedByRetailer);
+  _;
+}
+// State : 10
+modifier receivedByRetailer(uint _upc) {
+  require(items[_upc].itemState == State.ReceivedByRetailer);
+  _;
+}
+// State : 11
+modifier forSaleByRetailer(uint _upc) {
+  require(items[_upc].itemState == State.ForSaleByRetailer);
+  _;
+}
+// State : 12
+modifier purchasedByConsumer(uint _upc) {
+  require(items[_upc].itemState == State.PurchasedByConsumer);
+  _;
+}
+```
+
+3. Role based modifiers inherited from other contracts.
+
+_Note: Used to implement Access Control_
+
+```js
+// FarmerRole.sol
+modifier onlyFarmer() {
+  require(isFarmer(msg.sender));
+  _;
+}
+// DistributorRole.sol
+modifier onlyDistributor() {
+  require(isDistributor(msg.sender));
+  _;
+}
+// RetailerRole.sol
+modifier onlyRetailer() {
+   require(isRetailer(msg.sender));
+  _;
+}
+// ConsumerRole.sol
+modifier onlyConsumer() {
+  require(isConsumer(msg.sender));
+  _;
+}
+
+```
+
+
+
+
+
+### events
+
+Each supply chain function emits its own event when successful.
+
+```js
+event ProduceByFarmer(uint upc);         //1
+event ForSaleByFarmer(uint upc);         //2
+event PurchasedByDistributor(uint upc);  //3
+event ShippedByFarmer(uint upc);         //4
+event ReceivedByDistributor(uint upc);   //5
+event ProcessedByDistributor(uint upc);  //6
+event PackagedByDistributor(uint upc);   //7
+event ForSaleByDistributor(uint upc);    //8
+event PurchasedByRetailer(uint upc);     //9
+event ShippedByDistributor(uint upc);    //10
+event ReceivedByRetailer(uint upc);      //11
+event ForSaleByRetailer(uint upc);       //12
+event PurchasedByConsumer(uint upc);     //13
+```
+
+### Access Control
+
+Access control is implemented by contracts found within the parmigianoaccesscontrol directory that are inherited by the supplychain. Consisting of four contracts for each actor of the supply chain (Farmer,Distributor,Retailer and Consumer). Each contract contains a function that allows a address to be added to that role. This is only premitted by the contract owner. Contract modifiers are used to inforce access controls within the supplychain.
+
+
+
+### Supply Chain
+
+16 functions make up the Parmigiano Reggiano supply chain, including the validation functions (fetchItemBufferOne,fetchItemBufferTwo,fetchItemHistory) that are available to all roles.
+
+
+__SupplyChain Functions__
+
+|SupplyChain Functions                 | Modifiers | Event |
+|:---------------------------:|:--------------------:|:-------------:|
+|produceItemByFarmer()   |    OnlyFarmer() |         ProduceByFarmer(_upc)         |  
+|SellItemByFarmer()      |    OnlyFarmer() <br> producedByFarmer() <br> verifyCaller(items[_upc].ownerID) |     ForSaleByFarmer(_upc)|  
+|purchaseItemByDistributor()   | onlyDistributor() <br> forSaleByFarmer(_upc) <br> paidEnough(items[_upc].productPrice) <br> checkValue(_upc, msg.sender)|       PurchasedByDistributor(_upc)         |  
+|shippedItemByFarmer()   |    onlyFarmer() <br> purchasedByDistributor(_upc) <br> verifyCaller(items[_upc].originFarmerID) |            ShippedByFarmer(_upc)             |      
+|receivedItemByDistributor()   |    onlyDistributor() <br> shippedByFarmer(_upc) <br> verifyCaller(items[_upc].ownerID)| ReceivedByDistributor(_upc)   |  
+|processedItemByDistributor()   |    onlyDistributor() <br> receivedByDistributor(_upc) <br> verifyCaller(items[_upc].ownerID) |   ProcessedByDistributor(_upc)           |  
+|packageItemByDistributor()   |    onlyDistributor() <br> processByDistributor(_upc) <br> verifyCaller(items[_upc].ownerID) | PackagedByDistributor(_upc)   |  
+|sellItemByDistributor()   |    onlyDistributor() <br> packagedByDistributor(_upc) <br> verifyCaller(items[_upc].ownerID)|  ForSaleByDistributor(upc)  |  
+|purchaseItemByRetailer   |    onlyRetailer() <br> forSaleByDistributor(_upc) <br> paidEnough(items[_upc].productPrice) <br> checkValue(_upc, msg.sender) |        PurchasedByRetailer(_upc)               |  
+|shippedItemByDistributor   |    onlyDistributor() <br> purchasedByRetailer(_upc) <br> verifyCaller(items[_upc].distributorID) |       ShippedByDistributor(_upc)     |  
+|receivedItemByRetailer()   |  onlyRetailer() <br> shippedByDistributor(_upc) <br> verifyCaller(items[_upc].ownerID) |     ReceivedByRetailer(_upc)            |  
+|sellItemByRetailer()   |    onlyRetailer() <br> receivedByRetailer(_upc) <br> verifyCaller(items[_upc].ownerID) |   ForSaleByRetailer(_upc)    |  
+|purchaseItemByConsumer()   |    onlyConsumer() <br> forSaleByRetailer(_upc) <br> paidEnough(items[_upc].productPrice) <br>checkValue(_upc, msg.sender) |         PurchasedByConsumer(_upc)          |  
+|fetchItemBufferOne() | Any|           None               |             
+|fetchItemBufferTwo() | Any|             None             |                   
+|fetchItemHistory() | Any|                  None          |               
+
+
+### Check Authenticity
+
+The consumer can check authenticity by calling out fetchItemBufferOne() with the upc as input, this will return essential consumer information
+
+```
+originFarmerID
+originFarmName
+originFarmInformation
+originFarmLatitude
+originFarmLongitude
+productDate
+projectSliced.
+```
+
+Additional information can be received by calling out fetchItemBufferTwo this will return information more essential to the supplychain.
+```
+sku
+upc
+productID,
+productNotes
+productDate
+itemState
+distributorID
+retailerID
+consumerID
+```
+
+ItemHistory returns three block-numbers of where ownership of the item changed.
+
+```
+farmerToDistributor
+DistributorToRetailer
+RetailerToConsumer
+```
+
+---
+
+
+## TestSupplychain.js
+
+Used to test the all 16 supply-chain functions, all test pass the requirements.
+
+![alt text](/readmepic/pic1.png "All test pass")
+
+
+## Dapp
+
+I do find my UI a little difficult to used but being the third division I had to settle on something.
+
+Follow the steps to purchase some cheese from the farmer to the consumer.
+
+
+_Note HTML below does not have javascript enabled for security reasons, go to Quick start to launch this DApp_
+
+<iframe src="index.html" style= '    height: 500px;
+    width: 900px;'></iframe>
 
 
 ## Versions
 
-## Testing
+Compiler: solc: 0.5.0+commit.1d4f565a.Emscripten.clang
 
-## App.js
+Truffle: v5.0.14
+
+Node: v11.3.0
+
+## Deployed to Rinkeby
+
+Contract Address: https://rinkeby.etherscan.io/address/0xfd5f80e2a7cd15b011c7f1ce7e74a89e2c97fbd8
+
+Contract Creator: https://rinkeby.etherscan.io/address/0x49d15e7c94b1ae3c273e29bd8faf863157b2cf92
 
 ## Quick Start
 
-### Deploying to ganache
+1. Go into project repro
 
-### Deploying to Rinkeby
+        cd Ethereum_SupplyChain
+
+2. download node libraries
+
+        npm install
+
+3. Download/Start ganache
+
+https://truffleframework.com/ganache
+
+4. Compiling contracts
+
+        truffle compile
+
+
+5. Migrating to ganache
+
+_Note depending on ganache cli/ui you my need to change truffle.js port settings Current listing on port : 7545_
+
+        truffle migrate --network development  --reset --all
+
+6. Testing
+
+        truffle test
+
+
+7. Start FrontEnd DApp on ganache
+
+          npm run dev
+
+8. Migrating to Rinkeby
+
+        truffle migrate --network rinkeby  --reset --all
+
+9. Start FrontEnd DApp on Rinkeby
+
+        npm run dev
 
 
 ## Sources

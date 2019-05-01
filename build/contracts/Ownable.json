@@ -82,9 +82,9 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity >=0.4.24;\r\n\r\n/// Provides basic authorization control\r\ncontract Ownable {\r\n    address private origOwner;\r\n\r\n    // Define an Event\r\n    event TransferOwnership(address indexed oldOwner, address indexed newOwner);\r\n\r\n    /// Assign the contract to an owner\r\n    constructor () internal {\r\n        origOwner = msg.sender;\r\n        emit TransferOwnership(address(0), origOwner);\r\n    }\r\n\r\n    /// Look up the address of the owner\r\n    function ownerLookup() public view returns (address) {\r\n        return origOwner;\r\n    }\r\n\r\n    /// Define a function modifier 'onlyOwner'\r\n    modifier onlyOwner() {\r\n        require(isOwner());\r\n        _;\r\n    }\r\n\r\n    /// Check if the calling address is the owner of the contract\r\n    function isOwner() public view returns (bool) {\r\n        return msg.sender == origOwner;\r\n    }\r\n\r\n    /// Define a function to renounce ownerhip\r\n    function renounceOwnership() public onlyOwner {\r\n        emit TransferOwnership(origOwner, address(0));\r\n        origOwner = address(0);\r\n    }\r\n\r\n    /// Define a public function to transfer ownership\r\n    function transferOwnership(address newOwner) public onlyOwner {\r\n        _transferOwnership(newOwner);\r\n    }\r\n\r\n    /// Define an internal function to transfer ownership\r\n    function _transferOwnership(address newOwner) internal {\r\n        require(newOwner != address(0));\r\n        emit TransferOwnership(origOwner, newOwner);\r\n        origOwner = newOwner;\r\n    }\r\n}\r\n",
-  "sourcePath": "/Users/mitch/Desktop/BlockChain_SuppyChain/contracts/coffeecore/Ownable.sol",
+  "sourcePath": "/Users/mitch/Desktop/BlockChain_SuppyChain/contracts/parmigianocore/Ownable.sol",
   "ast": {
-    "absolutePath": "/Users/mitch/Desktop/BlockChain_SuppyChain/contracts/coffeecore/Ownable.sol",
+    "absolutePath": "/Users/mitch/Desktop/BlockChain_SuppyChain/contracts/parmigianocore/Ownable.sol",
     "exportedSymbols": {
       "Ownable": [
         2031
@@ -1440,7 +1440,7 @@
     "src": "0:1467:7"
   },
   "legacyAST": {
-    "absolutePath": "/Users/mitch/Desktop/BlockChain_SuppyChain/contracts/coffeecore/Ownable.sol",
+    "absolutePath": "/Users/mitch/Desktop/BlockChain_SuppyChain/contracts/parmigianocore/Ownable.sol",
     "exportedSymbols": {
       "Ownable": [
         2031
@@ -2801,7 +2801,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.8",
-  "updatedAt": "2019-04-29T04:03:30.831Z",
+  "updatedAt": "2019-05-01T20:30:02.993Z",
   "devdoc": {
     "methods": {}
   },
