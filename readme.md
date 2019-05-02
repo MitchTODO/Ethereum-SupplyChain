@@ -379,7 +379,7 @@ Tx Hash of contract creation :https://rinkeby.etherscan.io/tx/0xec2a4f9210ff68ff
 
 ## Quick Start
 
-1. Go into project repro
+1. cd into project repro
 
         cd Ethereum_SupplyChain
 
