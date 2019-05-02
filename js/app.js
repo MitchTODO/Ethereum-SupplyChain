@@ -211,7 +211,7 @@ App = {
                   {from: App.metamaskAccountID, gas:3000000}
               );
             }
-            sleep(800);
+            sleep(1000);
             checkRole = await instance.isFarmer(App.originFarmerID);
             return checkRole;
         }).then(function(result) {
@@ -243,7 +243,7 @@ App = {
 
               );
             }
-            sleep(800);
+            sleep(1000);
             checkRole = await instance.isDistributor(App.DistributorID);
             return checkRole
         }).then(function(result) {
@@ -274,7 +274,7 @@ App = {
                   {from: App.metamaskAccountID, gas:3000000}
               );
             }
-            sleep(800);
+            sleep(1000);
             checkRole = await instance.isRetailer(App.RetailerID);
             return checkRole;
         }).then(function(result) {
@@ -304,7 +304,7 @@ App = {
                   {from: App.metamaskAccountID, gas:3000000}
               );
             }
-            sleep(800);
+            sleep(1000);
             checkRole = await instance.isConsumer(App.ConsumerID);
             return checkRole;
         }).then(function(result) {

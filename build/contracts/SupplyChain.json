@@ -34060,14 +34060,306 @@
       "transactionHash": "0xec2a4f9210ff68ff6b3227575ce9719a02198e0d64612263263b005f94b8f3a3"
     },
     "5777": {
-      "events": {},
+      "events": {
+        "0xe8a027a2bb83abbf6ec926b84d4aeb91585c16b58b27b8d0f0fb451566a55211": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "upc",
+              "type": "uint256"
+            }
+          ],
+          "name": "ProduceByFarmer",
+          "type": "event",
+          "signature": "0xe8a027a2bb83abbf6ec926b84d4aeb91585c16b58b27b8d0f0fb451566a55211"
+        },
+        "0x7a02b5a0b1f928cffcafd0e750f369a40f124f4f34f65801fe1f0d945b9a7915": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "upc",
+              "type": "uint256"
+            }
+          ],
+          "name": "ForSaleByFarmer",
+          "type": "event",
+          "signature": "0x7a02b5a0b1f928cffcafd0e750f369a40f124f4f34f65801fe1f0d945b9a7915"
+        },
+        "0xacd9402b9f9e8c15fa7c1819f8393ca56eb61316cc354fc6ac2150aed3ce7931": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "upc",
+              "type": "uint256"
+            }
+          ],
+          "name": "PurchasedByDistributor",
+          "type": "event",
+          "signature": "0xacd9402b9f9e8c15fa7c1819f8393ca56eb61316cc354fc6ac2150aed3ce7931"
+        },
+        "0xe6ae062d51064ae2a5a31a72fcb1bee1d343fdc6bddc1d3dfce658ece4f03212": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "upc",
+              "type": "uint256"
+            }
+          ],
+          "name": "ShippedByFarmer",
+          "type": "event",
+          "signature": "0xe6ae062d51064ae2a5a31a72fcb1bee1d343fdc6bddc1d3dfce658ece4f03212"
+        },
+        "0xc8ca2150e6e1849a10ef5aa4932060fa353bcacdffeb150c9e1890c6ab9403cc": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "upc",
+              "type": "uint256"
+            }
+          ],
+          "name": "ReceivedByDistributor",
+          "type": "event",
+          "signature": "0xc8ca2150e6e1849a10ef5aa4932060fa353bcacdffeb150c9e1890c6ab9403cc"
+        },
+        "0x5725e53fd0efed5294b7db2af148f040264a63630b4deb0afbccf6e60830988a": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "upc",
+              "type": "uint256"
+            }
+          ],
+          "name": "ProcessedByDistributor",
+          "type": "event",
+          "signature": "0x5725e53fd0efed5294b7db2af148f040264a63630b4deb0afbccf6e60830988a"
+        },
+        "0xe66bb55f536a4cc96647dde6ff37b712c07348eaa88366931f491d93c0fcd981": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "upc",
+              "type": "uint256"
+            }
+          ],
+          "name": "PackagedByDistributor",
+          "type": "event",
+          "signature": "0xe66bb55f536a4cc96647dde6ff37b712c07348eaa88366931f491d93c0fcd981"
+        },
+        "0x539b4a835a8a5d1bc5756a9f146e2bfeaa6bd6b1fa77a7631c0a5154c86cdd03": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "upc",
+              "type": "uint256"
+            }
+          ],
+          "name": "ForSaleByDistributor",
+          "type": "event",
+          "signature": "0x539b4a835a8a5d1bc5756a9f146e2bfeaa6bd6b1fa77a7631c0a5154c86cdd03"
+        },
+        "0xaa7352d10146444c3afd9bd7fb0ae56b0a85e81139536bbec3f1f660fddd7be1": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "upc",
+              "type": "uint256"
+            }
+          ],
+          "name": "PurchasedByRetailer",
+          "type": "event",
+          "signature": "0xaa7352d10146444c3afd9bd7fb0ae56b0a85e81139536bbec3f1f660fddd7be1"
+        },
+        "0xc5c33776d405e5686e4386e1ef31a65cf6195e4f7ceb8808ab64d05b6ccbc2a6": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "upc",
+              "type": "uint256"
+            }
+          ],
+          "name": "ShippedByDistributor",
+          "type": "event",
+          "signature": "0xc5c33776d405e5686e4386e1ef31a65cf6195e4f7ceb8808ab64d05b6ccbc2a6"
+        },
+        "0x322f34e90f2269750b3e28178631d975cc678db36f21098fe548b7f755ce0bd0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "upc",
+              "type": "uint256"
+            }
+          ],
+          "name": "ReceivedByRetailer",
+          "type": "event",
+          "signature": "0x322f34e90f2269750b3e28178631d975cc678db36f21098fe548b7f755ce0bd0"
+        },
+        "0x59e7ad085805e2b02ad4b0f8033bd75e7ee4c8cd43f996267463585e35896252": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "upc",
+              "type": "uint256"
+            }
+          ],
+          "name": "ForSaleByRetailer",
+          "type": "event",
+          "signature": "0x59e7ad085805e2b02ad4b0f8033bd75e7ee4c8cd43f996267463585e35896252"
+        },
+        "0xc7e94446a942a0541d0224ece380a730c85f03db7188fca783225da9255929f7": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "upc",
+              "type": "uint256"
+            }
+          ],
+          "name": "PurchasedByConsumer",
+          "type": "event",
+          "signature": "0xc7e94446a942a0541d0224ece380a730c85f03db7188fca783225da9255929f7"
+        },
+        "0x28b26e7a3d20aedbc5f8f2ebf7da671c0491723a2b78f47a097b0e46dee07142": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "ConsumerAdded",
+          "type": "event",
+          "signature": "0x28b26e7a3d20aedbc5f8f2ebf7da671c0491723a2b78f47a097b0e46dee07142"
+        },
+        "0xe3f5ed5f263f1f01764a96edfc7d025f511ec5f7d180e8816908b78bcf74f098": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "ConsumerRemoved",
+          "type": "event",
+          "signature": "0xe3f5ed5f263f1f01764a96edfc7d025f511ec5f7d180e8816908b78bcf74f098"
+        },
+        "0x71ae26cad02663e3d92efd6ec56031a80d74a20c0ab4183faa8bf262261c9baa": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "RetailerAdded",
+          "type": "event",
+          "signature": "0x71ae26cad02663e3d92efd6ec56031a80d74a20c0ab4183faa8bf262261c9baa"
+        },
+        "0xdb7176e79cffef81cb01767dd0447a0b24bb72ca9778d4b245581086b2a7e6db": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "RetailerRemoved",
+          "type": "event",
+          "signature": "0xdb7176e79cffef81cb01767dd0447a0b24bb72ca9778d4b245581086b2a7e6db"
+        },
+        "0xddbf200aa634dc3fb81cfd68583dd1040d1c751d335e1d86b631bde3e977fea8": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "DistributorAdded",
+          "type": "event",
+          "signature": "0xddbf200aa634dc3fb81cfd68583dd1040d1c751d335e1d86b631bde3e977fea8"
+        },
+        "0x126174f6cf49c81cdb4a9214c6b8f037bef55b4ec31e4fc776cea2a1c8a88d59": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "DistributorRemoved",
+          "type": "event",
+          "signature": "0x126174f6cf49c81cdb4a9214c6b8f037bef55b4ec31e4fc776cea2a1c8a88d59"
+        },
+        "0x2e0ded4123377a3c2bc9a26f1717655a129e2f20752924d42e730ec89c83dbd0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "FarmerAdded",
+          "type": "event",
+          "signature": "0x2e0ded4123377a3c2bc9a26f1717655a129e2f20752924d42e730ec89c83dbd0"
+        },
+        "0xa5e0f060af304ab17dd418c7927e3da3ae7868189bf387aee09ab179ccc572f2": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "FarmerRemoved",
+          "type": "event",
+          "signature": "0xa5e0f060af304ab17dd418c7927e3da3ae7868189bf387aee09ab179ccc572f2"
+        },
+        "0x5c486528ec3e3f0ea91181cff8116f02bfa350e03b8b6f12e00765adbb5af85c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "oldOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "TransferOwnership",
+          "type": "event",
+          "signature": "0x5c486528ec3e3f0ea91181cff8116f02bfa350e03b8b6f12e00765adbb5af85c"
+        }
+      },
       "links": {},
       "address": "0x751507c889C7A16308534D977f5715f0588651aB",
       "transactionHash": "0xfe794fccac5133d52efe937befb4534cde7627be52c747b2e9a89ab180a2a803"
     }
   },
   "schemaVersion": "3.0.8",
-  "updatedAt": "2019-05-01T20:30:05.431Z",
+  "updatedAt": "2019-05-01T23:21:43.539Z",
   "devdoc": {
     "methods": {}
   },

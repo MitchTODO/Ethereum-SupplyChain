@@ -296,7 +296,7 @@ Access control is implemented by contracts found within the "parmigianoaccesscon
 16 functions make up the Parmigiano Reggiano supplychain, including the validation functions.
 
 
-__SupplyChain Functions__
+__SupplyChain Function Modifiers and Events__
 
 |SupplyChain Functions                 | Modifiers | Event |
 |:---------------------------:|:--------------------:|:-------------:|
@@ -346,6 +346,15 @@ Used to test the all 16 supplychain functions, all test pass the requirements.
 
 I do find my UI a little difficult to use, but settled on the third revision.
 
+### Adding roles to address (simulating users)
+
+_Note must be sent from the contract owner_
+
+![alt text](/readmepic/pic8.png "Pic")
+
+
+### SupplyChain
+
 ![alt text](/readmepic/pic2.png "Pic")
 
 ![alt text](/readmepic/pic6.png "Pic")
@@ -365,6 +374,8 @@ Node: v11.3.0
 Contract Address: https://rinkeby.etherscan.io/address/0xfd5f80e2a7cd15b011c7f1ce7e74a89e2c97fbd8
 
 Contract Creator: https://rinkeby.etherscan.io/address/0x49d15e7c94b1ae3c273e29bd8faf863157b2cf92
+
+Tx Hash of contract creation :https://rinkeby.etherscan.io/tx/0xec2a4f9210ff68ff6b3227575ce9719a02198e0d64612263263b005f94b8f3a3
 
 ## Quick Start
 
