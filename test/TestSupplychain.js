@@ -558,7 +558,7 @@ contract('SupplyChain', function(accounts) {
         assert.equal(resultBufferTwo[9],consumerID, "Error : Invalid consumerID")
 
     })
-
+// async function to help check block hashTx
 async function getTx(blockNumber){
     let tx1 = await web3.eth.getBlock(blockNumber);
     return  (await web3.eth.getTransaction(tx1.transactions[0]));
