@@ -9,8 +9,8 @@ A supplychain smart contract written in Solidity and deployed on the Rinkeby tes
 ## Directory Structor
 
 - Ethereum_SupplyChian
- - Diagrams
-  - Parmigiano_Reggiano_Activity_Diagram.png
+  - Diagrams
+    - Parmigiano_Reggiano_Activity_Diagram.png
   - Parmigiano_Reggiano_DataModel_Diagram.png
   - Parmigiano_Reggiano_Sequence_Diagram.png 
   - Parmigiano_Reggiano_State_Diagram.png
